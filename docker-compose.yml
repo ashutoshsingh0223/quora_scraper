@@ -1,0 +1,25 @@
+# version of compose 
+version: "3.1"
+services:        
+  app:
+# container defines name of container 
+# path of Dockerfile(just directory)
+# which port of host is mapped to container
+    container_name: quorascraper
+    build: .          
+    ports:               
+      - "3000:3000"  
+# dependencies  
+    depends_on:
+      - firefox-container
+    volumes:
+      - .:/app
+# pulls firefox image from docker-hub
+#in case you want to use chrome you can put image of that
+  firefox-container:
+    container_name: firefox-container
+    image: selenium/standalone-firefox:latest
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "4444:4444"

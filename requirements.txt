@@ -1,0 +1,6 @@
+beautifulsoup4==4.7.1
+numpy==1.16.2
+pandas==0.24.1
+selenium==3.141.0
+xlsxwriter==1.1.5
+xlrd==1.1.0
