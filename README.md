@@ -43,10 +43,10 @@ chrome_options.add_argument('--disable-gpu')
 driver = webdriver.Chrome(chrome_options=chrome_options)
 ```
 
-Add any one of the following lines depending upon what driver you have.
-For `Chromediver` add  
+Add any one of the following lines depending upon what driver you have.  
+For  `Chromediver`  add-  
 `driver = webdriver.Chrome()`  
-For `geckodriver(Mozilla)`  
+For  `geckodriver(Mozilla)` add-  
 `driver = webdriver.Firefox()`
 
 Then run these commands sequentially
