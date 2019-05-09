@@ -45,7 +45,8 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 
 Add any one of the following lines depending upon what driver you have.  
 For  `Chromediver`  add-  
-`driver = webdriver.Chrome()`  
+`driver = webdriver.Chrome()` 
+
 For  `geckodriver(Mozilla)` add-  
 `driver = webdriver.Firefox()`
 
