@@ -29,10 +29,7 @@ class Sel:
 		self.accept_next_alert = True
 
 	def run_scraper(self):
-		topics = ["Personal-Finance","Loans","Personal-Loans-1","Bank-Loans","Financial-Services-1",
-			"Finance","Finance-in-India", "Finance-and-Investments", "Investing-in-the-Stock-Market-1",
-			"Hedge-Funds", "Investing", "Mutual-Fund-Investment-Strategies", "The-Economics-of-Investing","Stock-Markets-2",
-			"Investment-Advice","Mutual-Fund-Investment-Advice-1","Stocks-finance"]
+		topics = ["Bollywood"]
 		try:
 			for topic in topics:
 				# driver = webdriver.Firefox()

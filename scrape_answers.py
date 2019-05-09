@@ -21,10 +21,7 @@ import sys
 import os
 import fetch_answer_and_related_questions
 
-topics = ["Personal-Finance","Loans","Personal-Loans-1","Bank-Loans","Financial-Services-1",
-			"Finance","Finance-in-India", "Finance-and-Investments", "Investing-in-the-Stock-Market-1",
-			"Hedge-Funds", "Investing", "Mutual-Fund-Investment-Strategies", "The-Economics-of-Investing","Stock-Markets-2",
-			"Investment-Advice","Mutual-Fund-Investment-Advice-1","Stocks-finance"]
+topics = ["Bollywood"]
 
 
 for topic in topics:
