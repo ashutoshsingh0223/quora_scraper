@@ -158,12 +158,12 @@ class fetch_answer_and_related_questions:
 
 		questions_with_answer_links_and_views = []
 		count = 0
-		# chrome_options = webdriver.ChromeOptions()
-		# chrome_options.add_argument('--no-sandbox')
-		# chrome_options.add_argument('--headless')
-		# chrome_options.add_argument('--disable-gpu')
-		# driver = webdriver.Chrome(chrome_options=chrome_options)
-		driver = webdriver.Firefox()
+		chrome_options = webdriver.ChromeOptions()
+		chrome_options.add_argument('--no-sandbox')
+		chrome_options.add_argument('--headless')
+		chrome_options.add_argument('--disable-gpu')
+		driver = webdriver.Chrome(chrome_options=chrome_options)
+# 		driver = webdriver.Firefox()
 		for key,link in zip(questions,links):
 			if link == "no answer":
 				continue
