@@ -31,10 +31,11 @@ class fetch_answer_and_related_questions:
 
 	def fetch(self,driver,dictionary_list,count):
 		f = self.f
+		file_name = "quora_answers"
 		if self.direct_related_marker is True:
-			workbook = xlsxwriter.Workbook(str(self.topic_dir)+"/"+str(self.topic)+"till_"+str(count)+"_answers_related.xlsx")
+			workbook = xlsxwriter.Workbook(str(file_name+"till_"+str(count)+"_answers_related.xlsx"))
 		else:
-			workbook = xlsxwriter.Workbook(str(self.topic_dir)+"/"+str(self.topic)+"till_"+str(count)+"_answers.xlsx")
+			workbook = xlsxwriter.Workbook(str(file_name+"till_"+str(count)+"_answers.xlsx"))
 		worksheet = workbook.add_worksheet()
 		row = 0
 		for dictionary in dictionary_list:
@@ -139,30 +140,35 @@ class fetch_answer_and_related_questions:
 		return 
 
 	def run(self):
-		df = pd.read_csv(str(self.topic_dir)+"/"+str(self.topic)+"_links.csv")
-		questions = df.loc[:,0].values.tolist()
-		links = df.loc[:,1].values.tolist()
+		df = pd.read_csv("quora_unanswered.csv")
+		questions = df["question"].values.tolist()
+		links = df["link"].values.tolist()
 
-		df_related = pd.read_csv(str(self.topic_dir)+"/"+str(self.topic)+"_links_related.csv")
-		augment_related_questions = df_related.loc[:,0].values.tolist()
-		augment_related_links = df_related.loc[:,1].values.tolist()
+		# df_related = pd.read_csv(str(self.topic_dir)+"/"+str(self.topic)+"_links_related.csv")
+		# augment_related_questions = df_related.loc[:,0].values.tolist()
+		# augment_related_links = df_related.loc[:,1].values.tolist()
 
 		# question_link is dictionary you can get from q_mf or other files
 		question_link ={}
 		
 		
-		len_for_differentiating_between_direct_and_related = len(questions)
-		questions.extend(augment_related_questions)
-		links.extend(augment_related_links)
+		len_for_differentiating_between_direct_and_related = len(questions)+10
+		# questions.extend(augment_related_questions)
+		# links.extend(augment_related_links)
 
 		questions_with_answer_links_and_views = []
 		count = 0
-		chrome_options = webdriver.ChromeOptions()
-		chrome_options.add_argument('--no-sandbox')
-		chrome_options.add_argument('--headless')
-		chrome_options.add_argument('--disable-gpu')
-		driver = webdriver.Chrome(chrome_options=chrome_options)
+		# chrome_options = webdriver.ChromeOptions()
+		# chrome_options.add_argument('--no-sandbox')
+		# chrome_options.add_argument('--headless')
+		# chrome_options.add_argument('--disable-gpu')
+		# driver = webdriver.Chrome(chrome_options=chrome_options)
+		driver = webdriver.Firefox()
 		for key,link in zip(questions,links):
+			if link == "no answer":
+				continue
+			if link.startswith("/unanswered"):
+				link = link.split("/unanswered")[1]
 			count+=1
 			print("\n\n\n\n\n\n\n\n\n\n\n")
 			print(":::::::::::::::::::::::::::::::::::::::::::::::::::"+str(count))
@@ -173,6 +179,7 @@ class fetch_answer_and_related_questions:
 								questions_with_answer_links_and_views = []
 								self.direct_related_marker = True
 			try:
+				print(self.base_url+""+link)
 				if str(link).startswith("/"):
 					driver.get(self.base_url+""+link)
 				else:

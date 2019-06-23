@@ -26,9 +26,9 @@ topics = ["Bollywood"]
 
 for topic in topics:
 	topic_dir = os.path.join(os.getcwd(),"data",str(topic))
-	if os.path.isdir(topic_dir):
-		print("------------------------------topic----------------------------------------------")
-		answer_related_questions_getter = fetch_answer_and_related_questions.fetch_answer_and_related_questions(topic_dir,topic)
-		answer_related_questions_getter.run()
-		print("------------------------------changing topic----------------------------------------------")
-		print("\n")
+	# if os.path.isdir(topic_dir):
+	print("------------------------------topic----------------------------------------------")
+	answer_related_questions_getter = fetch_answer_and_related_questions.fetch_answer_and_related_questions("topic_dir","topic")
+	answer_related_questions_getter.run()
+	print("------------------------------changing topic----------------------------------------------")
+	print("\n")
